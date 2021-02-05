@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img height="250" alt="Vue logo" src="./assets/logo.png" />
+    <div class="cards-list">
+      <Card 
+      v-for="character in characters"
+      :key="character.id"
+      :c-info="character"
+      
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Card from "./components/Card.vue";
+import axios from "axios";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Card,
+  },
+  data(){
+    return{
+      characters: null
+    }
+  },
+  mounted() {
+    axios
+      .get("https://rickandmortyapi.com/api/character")
+      .then((response) => {
+        this.characters = response.data.results;
+        
+      })
+      .catch((error) => {
+        console.log(error);
+        this.errored = true;
+      })
+      .finally(() => (this.loading = false));
+  },
+  
+};
 </script>
-
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
 }
 </style>
