@@ -1,7 +1,7 @@
 <template>
 
   <div v-on:click="getInfo(cInfo)" :class="{ ['card ' + cInfo.id] : true}">
-    <div class="card_image"><img :src="cInfo.image"/></div>
+    <div class="card_image"><img :alt="cInfo.id" :src="cInfo.image"/></div>
     <div class="card_title title-white">
       <p>{{ cInfo.name }}</p>
     </div>
