@@ -21,7 +21,7 @@ npm run lint
 ```
 
 ## Video
-![Demo](https://github.com/orhanerday/rickandmorty/edit/master/video.gif)
+![Demo](https://raw.githubusercontent.com/orhanerday/rickandmorty/master/video.gif)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
